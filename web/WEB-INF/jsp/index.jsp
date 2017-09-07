@@ -25,6 +25,18 @@
     </head>
     <body>
         <h1 align="center">Spring Web MVC CRUD</h1>
+        <p align="center">
+            <font color="green">
+            <c:if test="${sm != null}">
+                ${sm}
+            </c:if>
+            </font>   
+            <font color="red">
+            <c:if test="${em != null}">
+                ${em}
+            </c:if>
+            </font>   
+        </p>
         <table border="1">
             <thead>
                 <tr>
@@ -42,8 +54,8 @@
                         <td>${row.pname}</td>
                         <td>${row.price}</td>
                         <td>${row.qty}</td>
-                        <td><a href="<%= request.getContextPath()%>/edit">Edit</a></td>
-                        <td><a href="<%= request.getContextPath()%>/delete">Delete</a></td>
+                        <td><a href="<%= request.getContextPath()%>/editPage/${row.pid}">Edit</a></td>
+                        <td><a onclick="return confirm('Are you want to delete this item?')" href="<%= request.getContextPath()%>/delete/${row.pid}">Delete</a></td>
                     </tr>
                 </c:forEach>
             </tbody>

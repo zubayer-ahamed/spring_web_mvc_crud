@@ -44,10 +44,38 @@ public class ProductDao {
 
     }
 
+    //get product by id
+    public Product getProduct(int id) {
+        String sql = "select * from product where pid= ?";
+        return jdbcTemplate.queryForObject(sql, new Object[]{id}, new ProductMapper());
+    }
+
     //save product
     public boolean saveProduct(Product product) {
         String sql = "insert into product (pname, price, qty) values (?, ?, ?)";
         int value = jdbcTemplate.update(sql, new Object[]{product.getPname(), product.getPrice(), product.getQty()});
+
+        if (value > 0) {
+            return true;
+        }
+
+        return false;
+    }
+    
+    public boolean updateProduct(Product product){
+        String sql = "update product set pname=?, price=?, qty=? where pid=?";
+        int value = jdbcTemplate.update(sql, new Object[]{product.getPname(), product.getPrice(), product.getQty(), product.getPid()});
+
+        if (value > 0) {
+            return true;
+        }
+
+        return false;
+    }
+    
+     public boolean deleteProduct(int id){
+        String sql = "delete from product where pid=?";
+        int value = jdbcTemplate.update(sql, new Object[]{id});
 
         if (value > 0) {
             return true;
