@@ -1,27 +1,17 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Spring Mvc CRUD</title>
-        <style type="text/css">
-            table{
-                border-collapse: collapse;
-                margin: 0 auto;
-            }
+        
+        <spring:url value="/resources/style.css" var="styleCSS" />
+        
+        <link rel="stylesheet" type="text/css" href="${styleCSS}"/>
 
-            th{background: green; color: white;}
-            
-            th, td{
-                padding: 10px;
-            }
-
-            tfoot{
-                text-align: center;
-            }
-        </style>
     </head>
     <body>
         <h1 align="center">Spring Web MVC CRUD</h1>
@@ -62,7 +52,7 @@
             <tfoot>
                 <tr>
                     <td colspan="6">
-                        <a href="<%= request.getContextPath() %>/insertPage">Insert Product Page</a>
+                        <a href="<%= request.getContextPath()%>/insertPage">Insert Product Page</a>
                     </td>
                 </tr>
             </tfoot>
